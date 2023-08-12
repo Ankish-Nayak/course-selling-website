@@ -12,11 +12,14 @@ export const Courses = () => {
   const [courses, setCourses] = useState<(courseParams & _id)[]>();
   const init = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/admin/courses`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
+      const response = await axios.get(
+        `${BASE_URL}/admin/courses`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
       const data = response.data;
       if (data.courses) {
         setCourses(data.courses);
@@ -33,8 +36,8 @@ export const Courses = () => {
       style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
     >
       {!courses ||
-        courses.map((course) => {
-          return <Course course={course} />;
+        courses.map((course, idx) => {
+          return <Course course={course} key={idx} />;
         })}
     </div>
   );

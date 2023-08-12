@@ -78,7 +78,7 @@ export const AddCourse = () => {
             size="large"
             variant={"contained"}
             onClick={() => {
-              handleOnClick;
+              handleOnClick()
             }}
           >Add course</Button>
         </Card>
